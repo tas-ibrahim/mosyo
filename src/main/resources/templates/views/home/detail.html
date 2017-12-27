@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymelaf.org" xmlns:tiles="http://wwww.thymelaf.org">
+
+<head tiles:fragment="headerfragment" th:if="${product != null}">
+	<meta property="og:title" th:content="'Ürün Kodu : ' + ${product.code}"/>
+	<meta property="og:type" content="movie"/>
+	<meta property="og:url" th:content="${'http://www.mosyotriko.com/product/' + product.id}"/>
+	<meta property="og:image" th:content="${product.imageUrl}"/>
+	<meta property="og:site_name" content="Mösyö Triko"/>
+	<meta property="og:description"
+	      content="Mösyö Triko"/>
+</head>
+
+	<div class="contents" tiles:fragment="content" >
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		
+		<div class="container" style="margin-top: 60px">
+           <div class="row">
+               <div class="col-md-6 col-sm-8">
+               		
+               		<img  class="img-responsive" th:src="${@environment.getProperty('image.server')} + ${@environment.getProperty('bucket.name')} + '/' + ${product.imageUrl}" />
+							
+               		
+               </div>
+              	
+              	<div class="col-md-offset-1 col-md-5 col-sm-4">
+              	
+              		<h4 >Ürün Kodu : <span  th:text="${product.code}"></span></h4><br/>
+              		<h4 >Renkler : <span th:text="${product.colorNames}"></span></h4><br/>
+              		<h4 >Bedenler : <span>Small, Large</span></h4><br/>
+              		
+              		<a href="javascript:"  th:attr="share_url=@{'/product/' + ${product.id}}" class="fa fa-facebook"></a>
+              		&nbsp;&nbsp;
+              		<a href="#" class="fa fa-instagram"></a>
+              		<br/><br/>
+              		
+              		<h3><a>TEKLİF AL</a></h3>
+              		
+              	</div>
+              	
+            </div>
+		</div>
+	
+			<script type="text/javascript" src="/static/js/product.js"></script>
+	
+	</div>
+
+</html>

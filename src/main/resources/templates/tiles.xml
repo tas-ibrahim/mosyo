@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<definition name="admin.*" template="admin/{1}" />
+	<definition name="modal.*" template="modal/{1}" />
+
+    <definition name="*.*" template="layout/basic">
+        <put-attribute name="content" value="{1}/{2} :: content" />
+        <put-attribute name="title" value="{1}/{2} :: title"  />
+        <put-attribute name="styles" value="{1}/{2} :: styles"  />
+        <put-attribute name="scripts" value="{1}/{2} :: scripts"  />
+        <put-attribute name="headerfragment" value="{1}/{2} :: headerfragment" />
+    </definition>
+
+</tiles-definitions>

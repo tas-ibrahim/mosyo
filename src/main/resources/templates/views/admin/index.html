@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://wwww.thymelaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Admin Paneli</title>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/static/css/mosyo.css" rel="stylesheet" />
+<script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.lazyload.min.js"></script>
+
+
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/mosyo.js"></script>
+<script src="/static/js/product.js"></script>
+<script src="/static/js/bootbox.min.js"></script>
+<script src="/static/js/jquery.blockUI.min.js"></script>
+
+
+ <style>
+     
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+  
+  </style>
+
+</head>
+<body>
+	
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a class="navbar-brand" href="/">MÖSYÖ TRİKO</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	       
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	      
+	           <li><a href="#" >Metin Karakaya</a></li>
+		      			
+			  <li>
+			  	<form th:action="@{/logout}" method="post" name="logoutForm"></form>	
+				<a onclick="$('form[name=logoutForm]').submit()" ><i class="icon-key"></i> Çıkış</a>
+			  </li>	
+	      
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	
+	<br/>
+	
+	<div class="container">
+	  
+	  <a  href='/admin/product/save' class="btn btn-lg btn-primary productSave">Ürün Ekle</a>
+	  
+		<div id="myModal" class="modal fade">
+	        <div class="modal-dialog">
+	            <div class="modal-content">
+	                <!-- Content will be loaded here from "remote.php" file -->
+	            </div>
+	        </div>
+	    
+
+ 		 </div>
+ 		 
+ 		 <br/>
+	  
+	  <h3>ÜRÜNLER</h3>
+	 
+	  <div class="table-responsive" id="product_table">
+		  <table class="table table-bordered">
+		    <thead>
+		      <tr>
+		        <th>Resim</th>
+		        <th>Ürün Kodu</th>
+		        <th>Açıklama</th>
+		        <th>Düzenle</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    
+		     <tr th:each="product : ${products}">
+		     
+		     	  <td>
+		         	<img src="/static/image/lazy.gif" alt="" class="lazy" th:attr="data-original=${@environment.getProperty('image.server')} + ${@environment.getProperty('bucket.name')} + '/' + ${product.imageUrl}"
+							width="100" height="120"/>
+		         
+		         	<!-- <img  th:src="${product.imageUrl}"
+							width="100" height="120"/>
+		         -->
+		         
+		        </td>
+		        <td th:text="${product.code}">12345</td>
+		        <td th:inline="text">
+		        	Renkler :  [[${product.colorNames}]]<br/>
+		        	Bedenler : Small , Large
+		        </td>
+		        <td>
+		        	<a th:href="@{'/admin/product/save?id=' + ${product.id}}" class="productSave"><span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Düzenle"></span></a>
+		        	&nbsp;&nbsp;&nbsp;
+		        	<a th:href="@{'/admin/product/delete?id=' + ${product.id}}" class="productDelete" th:attr="code=${product.code}"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Sil"></span></a>
+		        	
+		        </td>
+		     
+		     </tr> 	
+		    
+		     
+		    </tbody>
+		  </table>
+	</div>
+	</div>
+	
+	
+
+</body>
+</html>

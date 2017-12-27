@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MÖSYÖ TRİKO</title>
+
+<link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/static/css/mosyo.css" rel="stylesheet" />
+
+  <style>
+     
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+  
+  </style>
+
+	<script type="text/javascript" src="/static/js/mosyo.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.lazyload.min.js"></script>	
+	<script src="/static/js/index.js"></script>
+
+	<script src="/static/js/bootstrap.min.js"></script>
+
+</head>
+
+<head tiles:replace="headerfragment"></head>
+
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>                        
+      			</button>
+				<a class="navbar-brand" href="/">MÖSYÖ TRİKO</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					
+					<li><a href="/iletisim">İletişim</a></li>
+					<li><a href="#">Ön Sipariş</a></li>
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+	 <div class="contents" tiles:include="content"/>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymelaf.org"  xmlns:tiles="http://wwww.thymelaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Mösyo Giyim</title>
+    
+	<link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/static/css/jquery.bxslider.css" rel="stylesheet"/>
+    <link href="/static/css/style.css" rel="stylesheet"/>
+
+</head>
+<body>
+	<header>
+	    <div class="container">
+	        <div class="row">
+
+	        	<!-- Logo -->
+	            <div class="col-lg-4 col-md-3 hidden-sm hidden-xs">
+	            	<div class="well logo">
+	            		<a href="/">
+	            			MÖSYÖ TRİKO
+	            		</a>
+	            		
+	            	</div>
+	            </div>
+	            <!-- End Logo -->
+
+	        </div>
+	    </div>
+    </header>
+
+	<!-- Navigation -->
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- text logo on mobile view -->
+                <a class="navbar-brand visible-xs" href="http://demo.18maret.com/demo/mimity/v1.2/index.html">MÖSYO GİYİM</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{/}" th:class="${pageTitle == 'anasayfa' ? 'active' : ''}">Anasayfa</a></li>
+                    <li><a th:href="@{/katolog/tumu}" th:class="${pageTitle == 'tumu' ? 'active' : ''}">Katolog</a></li>
+                    <li><a th:href="@{/hakkimizda}">Hakkımızda</a></li>
+                    <li><a th:href="@{/bize-ulasin}">Bize Ulaşın</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navigation -->
+
+    <div class="container main-container">
+       	
+        <div class="row">
+        
+
+        	<div class="clearfix visible-sm"></div>
+
+			 <div class="contents" tiles:include="content" />
+
+        	<div class="clearfix visible-sm"></div>
+
+
+        </div>
+	</div>
+
+
+
+    <script src="jquery.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="jquery.bxslider.min.js"></script>
+    <script src="jquery.blImageCenter.js"></script>
+    <script src="mimity.js"></script>
+
+</body></html>
