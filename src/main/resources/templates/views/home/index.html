@@ -51,7 +51,7 @@
 			<div class="product">
 				<div class="image">
 					<a th:href="@{'/product/' + ${product.id}}">
-						<img src="/static/image/lazy.gif" alt="" class="img-responsive lazy"  th:attr="data-original=${@environment.getProperty('image.server')} + ${@environment.getProperty('bucket.name')} + '/' + ${product.imageUrl}"
+						<img src="/static/image/lazy.gif" alt="" class="img-responsive lazy"   th:attr="data-original=${@environment.getProperty('image.server')} + ${@environment.getProperty('bucket.name')} + '/' + ${product.imageUrl}"
 							/>
 							
 					</a>

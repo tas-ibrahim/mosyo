@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.itas.mosyo.converter.StringListToColorListConverter;
+import com.itas.mosyo.converter.StringToProductConverter;
 
 @Configuration
 public class WebConfigurer extends WebMvcConfigurerAdapter {
@@ -26,13 +27,23 @@ public class WebConfigurer extends WebMvcConfigurerAdapter {
     
     @Override
     public void addFormatters(FormatterRegistry registry) {
+    	
         registry.addConverter(stringListToColorListConverter());
+        registry.addConverter(stringToProductConverter());
+    
     }
     
     @Bean
     public StringListToColorListConverter stringListToColorListConverter(){
     
     	return new StringListToColorListConverter();
+    	
+    }
+    
+    @Bean
+    public StringToProductConverter stringToProductConverter(){
+    	
+    	return new StringToProductConverter();
     	
     }
     
