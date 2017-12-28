@@ -16,36 +16,8 @@
 	
 	<div class="row products">
 	
-<!-- 		<div class="container">    
-		  <div class="row">
-		    <div class="col-sm-4" th:each="product : ${products}">
-		      <div class="panel">
-		        <div class="panel-heading" th:text="'Ürün Kodu : ' + ${product.code}">BLACK FRIDAY DEAL</div>
-		        <div class="panel-body">
-		        	<img src="https://placehold.it/150x1500?text=IMAGE" alt="" class="img-responsive lazy"  th:attr="data-original=${@environment.getProperty('image.server')} + ${@environment.getProperty('bucket.name')} + '/' + ${product.imageUrl}"
-							/>
-		        </div>
-		        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-		      </div>
-		    </div>
-		    <div class="col-sm-4"> 
-		      <div class="panel panel-danger">
-		        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-		        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"/></div>
-		        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-		      </div>
-		    </div>
-		    <div class="col-sm-4"> 
-		      <div class="panel panel-success">
-		        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-		        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"/></div>
-		        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-		      </div>
-		    </div>
-		  </div>
-	  </div>
- -->	
- 		<ul>
+
+ 		
  
 		<div class="col-md-4 col-xs-6" th:each="product : ${products}">
 			<div class="product">
@@ -70,7 +42,7 @@
 			</div>
 		</div>
 		
-		</ul>
+		
 		
 	</div>
 
