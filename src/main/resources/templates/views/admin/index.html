@@ -107,7 +107,7 @@
 		        <td th:text="${product.code}">12345</td>
 		        <td th:inline="text">
 		        	Renkler :  [[${product.colorNames}]]<br/>
-		        	Bedenler : Small , Large
+		        	Bedenler : S - M, L - XL
 		        </td>
 		        <td>
 		        	<a th:href="@{'/admin/product/save?id=' + ${product.id}}" class="productSave"><span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Düzenle"></span></a>
