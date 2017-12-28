@@ -29,8 +29,8 @@ function shareWindow(url) {
 }
 	
 
-function blockUI(el, centerY) {
-	var el = $(el);
+function blockUI(e, centerY) {
+	var el = $(e);
 	el.block({
 		message: '<img src="/static/image/ajax-loading.gif" alt="">',
 		centerY: centerY != undefined ? centerY : true,

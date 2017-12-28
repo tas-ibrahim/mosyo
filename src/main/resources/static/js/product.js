@@ -14,6 +14,16 @@ $(function() {
        
 	});
 
+	$('.productOffer').on('click', function(){
+		
+		   $('#myModal').removeData('bs.modal');
+	       $('#myModal').modal({remote: $(this).attr('href') });
+	       $('#myModal').modal('show');
+			
+	       return false;
+	       
+		});
+	
 	$('.productDelete').on('click', function(){
 		
 		var msg = $(this).attr("code") + " kodlu ürünü silmek istiyor musunuz?";

@@ -1,12 +1,15 @@
 package com.itas.mosyo.validator;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.itas.mosyo.model.Offer;
+import com.itas.mosyo.util.StringUtil;
 
+@Component
 public class OfferValidator implements Validator{
 
 	@Value("${email.regex}")
@@ -33,6 +36,12 @@ public class OfferValidator implements Validator{
 		if(offer.getProduct() == null)
 			errors.rejectValue("product", "product.invalid");
 		
+		if(  !StringUtil.isNothing(offer.getEmail())){
+			
+			if(!offer.getEmail().matches(emailRegex))
+				errors.rejectValue("email", "email.invalid");
+			
+		}
 		
 	}
 
