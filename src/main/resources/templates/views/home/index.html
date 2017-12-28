@@ -47,7 +47,7 @@
  -->	
  		<ul>
  
-		<li class="col-md-4 col-xs-6" th:each="product : ${products}">
+		<div class="col-md-4 col-xs-6" th:each="product : ${products}">
 			<div class="product">
 				<div class="image">
 					<a th:href="@{'/product/' + ${product.id}}">
@@ -68,7 +68,7 @@
 					
 				</div>
 			</div>
-		</li>
+		</div>
 		
 		</ul>
 		
