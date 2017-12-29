@@ -4,7 +4,12 @@
         "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
-	<definition name="admin.*" template="admin/{1}" />
+	<definition name="admin.login" template="admin/login" />
+
+	<definition name="admin.*" template="layout/admin">
+		<put-attribute name="content" value="admin/{1} :: content" />
+	</definition>
+	
 	<definition name="modal.*" template="modal/{1}" />
 
     <definition name="*.*" template="layout/basic">

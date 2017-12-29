@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://wwww.thymelaf.org">
+
+
+<body>
+	
+	<div class="contents" tiles:fragment="content">
+	
+		<br/>
+	
+		<div class="container">
+		  
+		  <h3>TEKLİF İSTEKLERİ</h3>
+		 
+		  <div class="table-responsive" id="offer_table">
+			  <table class="table table-bordered">
+			    <thead>
+			      <tr>
+			        <th>Ürün</th>
+			        <th>Tarih</th>
+			        <th>İsim</th>
+			        <th>Telefon Numarası</th>
+			        <th>E - Mail</th>
+			        <th>Ürün Adedi</th>
+			        <th>Düzenle</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    
+			     <tr th:each="offer : ${offers}">
+			     
+			     	  <td>
+			         	<a th:href="@{'/product/' + ${offer.product.id}}" target="_blank">
+			         		<img src="/static/image/lazy.gif" alt="" class="lazy" th:attr="data-original=${@environment.getProperty('image.server')} + ${@environment.getProperty('bucket.name')} + '/' + ${offer.product.imageUrl}"
+								width="100" height="120"/>
+						</a>
+			         
+			         	<!-- <img  th:src="${product.imageUrl}"
+								width="100" height="120"/>
+			         -->
+			         
+			        </td>
+			        <td th:text="${#dates.format(offer.createTime, 'dd.MM.yyyy HH:mm')}"></td>
+			        <td th:text="${offer.personName}"></td>
+			        <td th:text="${offer.phoneNumber}"></td>
+			        <td th:text="${offer.email}"></td>
+			        <td th:text="${offer.productCount}"></td>
+			     
+			     	<td>
+			        	<a th:href="@{'/admin/offer/delete/' + ${offer.id}}" class="offerDelete" ><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Sil"></span></a>
+			        	
+			        </td>	
+					
+			     
+			     </tr> 	
+			    
+			     
+			    </tbody>
+			  </table>
+		</div>
+		</div>
+	
+	</div>
+	
+
+</body>
+</html>

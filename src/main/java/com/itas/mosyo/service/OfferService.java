@@ -26,6 +26,15 @@ public class OfferService {
 		offerRepository.delete(offer);
 		
 	}
+
+	public void delete(long id){
+		
+		Offer offer = offerRepository.findOne(id);
+		
+		if(offer != null)
+			offerRepository.delete(offer);
+		
+	}
 	
 	public Page<Offer> getPage(int pageNumber){
 		

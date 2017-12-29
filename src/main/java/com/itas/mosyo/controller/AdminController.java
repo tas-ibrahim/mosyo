@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +16,7 @@ import com.itas.mosyo.data.RestResponse;
 import com.itas.mosyo.model.Product;
 import com.itas.mosyo.service.ColorService;
 import com.itas.mosyo.service.ImageService;
+import com.itas.mosyo.service.OfferService;
 import com.itas.mosyo.service.ProductService;
 import com.itas.mosyo.util.StringUtil;
 import com.itas.mosyo.validator.ProductValidator;
@@ -34,6 +36,8 @@ public class AdminController extends BaseController{
 	@Autowired
 	ImageService imageService;
 	
+	@Autowired
+	OfferService offerService;
 	
 	public AdminController(){
 		
@@ -144,6 +148,25 @@ public class AdminController extends BaseController{
 		
 		imageService.deleteImageFromFirebase(product.getImageUrl());
 		
+		return new RestResponse(true, null);
+		
+	}
+	
+	@GetMapping("/admin/offers")
+	public String offers(Model model){
+		
+		model.addAttribute("offers", offerService.getPage(0).getContent());
+		
+		return render("offers");
+		
+	}
+
+	@GetMapping("/admin/offer/delete/{id}")
+	@ResponseBody
+	public RestResponse offerDelete(@PathVariable("id") long id){
+		
+		offerService.delete(id);
+
 		return new RestResponse(true, null);
 		
 	}
