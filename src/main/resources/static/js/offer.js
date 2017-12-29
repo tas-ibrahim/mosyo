@@ -16,6 +16,7 @@ $(function() {
 
 	        	if (response.success) {
 	                
+	        		unblockUI($('#myModal'))
 	        		$('#myModal').modal('hide');
 
 	            } else {
