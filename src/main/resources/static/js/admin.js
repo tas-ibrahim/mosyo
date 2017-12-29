@@ -1,5 +1,9 @@
 $(function() {
 	
+	$("img.lazy").lazyload({
+	    effect : "fadeIn"
+	});
+	
 	$('.productSave').on('click', function(){
 		
 	   $('#myModal').removeData('bs.modal');
