@@ -1,5 +1,7 @@
 package com.itas.mosyo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itas.mosyo.data.ProductForm;
 import com.itas.mosyo.data.RestResponse;
+import com.itas.mosyo.model.Color;
 import com.itas.mosyo.model.Product;
 import com.itas.mosyo.service.ColorService;
 import com.itas.mosyo.service.ImageService;
 import com.itas.mosyo.service.OfferService;
 import com.itas.mosyo.service.ProductService;
 import com.itas.mosyo.util.StringUtil;
+import com.itas.mosyo.validator.ColorValidator;
 import com.itas.mosyo.validator.ProductValidator;
 
 @Controller
@@ -38,6 +42,9 @@ public class AdminController extends BaseController{
 	
 	@Autowired
 	OfferService offerService;
+	
+	@Autowired
+	ColorValidator colorValidator;
 	
 	public AdminController(){
 		
@@ -68,6 +75,66 @@ public class AdminController extends BaseController{
 		model.addAttribute("colors", colorService.findAll());
 		
 		return "modal.product_save";
+		
+	}
+	
+	@ModelAttribute("color")
+	public Color getColor(Long id, HttpServletRequest request){
+		
+		if(request.getRequestURI().indexOf("color") == -1)
+			return null;
+		
+		if(id != null)
+			return colorService.findById(id);
+		
+		else
+			return new Color();
+		
+	}
+
+	@GetMapping("/admin/color/save")
+	public String renderColorSaveForm(@ModelAttribute("color") Color color){
+		
+		return "modal.color_save";
+		
+	}
+	
+	@ResponseBody
+	@PostMapping("/admin/color/save")
+	public RestResponse saveColor(@ModelAttribute("color") Color color, BindingResult result){
+		
+		colorValidator.validate(color, result);
+		
+		if(result.hasErrors())
+			return createRestResponse(result.getFieldErrors());
+		
+		colorService.save(color);
+		
+		return new RestResponse(true, null);
+		
+	}
+	
+	@GetMapping("/admin/color/delete")
+	@ResponseBody
+	public RestResponse deleteColor(@RequestParam(name = "id") long id){
+		
+		int productColor = productService.getProductCountOfColor(id);
+		
+		if(productColor > 0){
+			
+			return new RestResponse(false, getMessage("color.nondeletable"));
+			
+		}
+		
+		Color color = colorService.findById(id); 
+		
+		if(color == null){
+			return new RestResponse(false, null);
+		}
+		
+		colorService.delete(color);
+		
+		return new RestResponse(true, null);
 		
 	}
 	
@@ -170,5 +237,16 @@ public class AdminController extends BaseController{
 		return new RestResponse(true, null);
 		
 	}
+	
+	@GetMapping("/admin/colors")
+	public String colors(Model model){
+		
+		model.addAttribute("colors", colorService.findAll());
+		
+		return render("colors");
+		
+	}
+	
+	
 	
 }

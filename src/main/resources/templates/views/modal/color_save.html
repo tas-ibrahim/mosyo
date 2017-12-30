@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+
+<script src="/static/js/jquery-upload.js"></script>
+<script src="/static/js/jquery.validate.min.js"></script>
+<script src="/static/js/color_save.js"></script>
+
+</head>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" th:text="${color.id == null ? 'Renk Ekle' : 'Renk Güncelle'}">Renk Ekle</h4>
+</div>
+<div class="modal-body">
+    
+    <form th:action="@{'/admin/color/save'}" method="post" id="saveColorForm" enctype="multipart/form-data">
+    
+    	<input type="hidden"  name="id" th:value="${color.id}" th:if="${color.id != null}" />
+	    <div class="form-group">
+	      <label for="color">Renk:</label>
+	      <input type="text" th:value="${color.name != null ? color.name : ''}"  class="form-control" id="color"  placeholder="Renk" name="name" />
+	    </div>
+	   
+  </form>
+    
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">İptal</button>
+    <button type="button" class="btn btn-primary" id="saveColorBtn">Kaydet</button>
+</div>
+
+</html>

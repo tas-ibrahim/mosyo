@@ -4,20 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.itas.mosyo.data.ProductForm;
 import com.itas.mosyo.data.RestResponse;
 import com.itas.mosyo.model.Offer;
 import com.itas.mosyo.model.Product;
 import com.itas.mosyo.service.OfferService;
 import com.itas.mosyo.service.ProductService;
-import com.itas.mosyo.util.StringUtil;
 import com.itas.mosyo.validator.OfferValidator;
 
 @Controller

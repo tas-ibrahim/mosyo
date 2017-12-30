@@ -38,7 +38,7 @@ public class OfferService {
 	
 	public Page<Offer> getPage(int pageNumber){
 		
-		return offerRepository.findAll(new PageRequest(pageNumber, 20, Direction.DESC, "createTime"));
+		return offerRepository.findAll(new PageRequest(pageNumber, 200, Direction.DESC, "createTime"));
 		
 	}
 	

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://wwww.thymelaf.org">
+
+
+<body>
+	
+	<div class="contents" tiles:fragment="content">
+	
+		<br/>
+	
+		<div class="container">
+		  
+		 <a  href='/admin/color/save' class="btn btn-lg btn-primary colorSave">Renk Ekle</a>
+		  
+		 <div id="myModal" class="modal fade">
+	        <div class="modal-dialog">
+	            <div class="modal-content">
+	                <!-- Content will be loaded here from "remote.php" file -->
+	            </div>
+	        </div>
+	    
+
+ 		 </div>
+		  
+		  <h3>Renkler</h3>
+		 
+		  <div class="table-responsive" id="color_table">
+			  <table class="table table-bordered">
+			    <thead>
+			      <tr>
+			        <th>Renk</th>
+			        <th>Düzenle</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    
+			     <tr th:each="color : ${colors}">
+			     
+			        <td th:text="${color.name}"></td>
+			     
+			     	<td>
+			     		<a th:href="@{'/admin/color/save?id=' + ${color.id}}" class="colorSave"><span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Düzenle"></span></a>
+			        	&nbsp;&nbsp;&nbsp;&nbsp;
+			        	<a th:href="@{'/admin/color/delete?id=' + ${color.id}}" class="colorDelete" th:attr="name=${color.name}"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Sil"></span></a>
+			        </td>	
+					
+			     
+			     </tr> 	
+			    
+			     
+			    </tbody>
+			  </table>
+		</div>
+		</div>
+	
+	</div>
+	
+
+</body>
+</html>

@@ -48,4 +48,11 @@ public class ProductService {
 		
 	}
 	
+	public int getProductCountOfColor(long id){
+		
+		return productRepository.getProductCountOfColor(id);
+		
+	}
+	
+	
 }

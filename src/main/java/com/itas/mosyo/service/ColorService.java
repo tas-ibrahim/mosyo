@@ -25,4 +25,22 @@ public class ColorService {
 		
 	}
 	
+	public Color save(Color color){
+		
+		return colorRepository.save(color);
+		
+	}
+	
+	public Color findByName(String name){
+		
+		return colorRepository.findByName(name);
+		
+	}
+	
+	public void delete(Color color){
+		
+		colorRepository.delete(color);
+		
+	}
+	
 }

@@ -3,12 +3,14 @@ package com.itas.mosyo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Product extends BaseModel{
@@ -23,6 +25,9 @@ public class Product extends BaseModel{
 	@JoinTable(name = "product_color", joinColumns = @JoinColumn(name = "product_id"),
 		inverseJoinColumns = @JoinColumn(name = "color_id"))
 	List<Color> colors;
+	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	List<Offer> offers;
 	
 	public String getCode() {
 		return code;
@@ -79,5 +84,13 @@ public class Product extends BaseModel{
 	public String getImageUrl() {
 		return imageUrl;
 	}
-	
+
+	public List<Offer> getOffers() {
+		return offers;
+	}
+
+	public void setOffers(List<Offer> offers) {
+		this.offers = offers;
+	}
+
 }
